@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <title>LiumGarden</title>
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+
+    <style>
+        .header{
+            margin-top: -50px;
+        }
+
+        .container{
+           padding-top: 230px;
+        }
+
+        .title{
+            margin-bottom: 50px;
+        }
+
+        .manage{
+            width: 80%;
+            margin: 0 auto;
+            background-color: beige;
+            padding: 20px;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .manage label{
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #namel{
+            width: 52%;
+            float: left;
+        }
+
+        #photol{
+            float: left;
+            width: 48%;
+        }
+
+        #name{
+            width: 48%;
+            float: left;
+            margin-right: 4%;
+        }
+
+        #photo{
+            float: left;
+            width: 48%;
+        }
+
+        #sortl{
+            width: 52%;
+            float: left;
+        }
+
+        #shapel{
+            float: left;
+            width: 48%;
+        }
+
+        #sort{
+            width: 48%;
+            float: left;
+            margin-right: 4%;
+        }
+
+        #shape{
+            float: left;
+            width: 48%;
+        }
+
+        #departl{
+            width: 52%;
+            float: left;
+        }
+
+        #heightl{
+            float: left;
+            width: 48%;
+        }
+
+        #depart{
+            width: 48%;
+            float: left;
+            margin-right: 4%;
+        }
+
+        #height{
+            float: left;
+            width: 48%;
+        }
+
+        #colorl{
+            width: 52%;
+            float: left;
+        }
+
+        #environl{
+            float: left;
+            width: 48%;
+        }
+
+        #color{
+            width: 48%;
+            float: left;
+            margin-right: 4%;
+        }
+
+        #environ{
+            float: left;
+            width: 48%;
+        }
+
+        #infol{
+            width: 52%;
+            float: left;
+        }
+
+        #newnamel{
+            float: left;
+            width: 48%;
+        }
+
+        #info{
+            width: 48%;
+            float: left;
+            margin-right: 4%;
+        }
+
+        #newname{
+            float: left;
+            width: 48%;
+        }
+
+
+
+        .manage input{
+            margin-top: 5px;
+            margin-bottom: 20px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid #578864;
+            font-weight: bold;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .manage button{
+            width: 100%;
+            background-color: #578864;
+            color: white;
+            height: 60px;
+            margin-top: 10px;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .manage button:hover{
+            background-color: #4c6753;;
+        }
+
+        #loginView{
+            position: relative;
+            display: none;
+        }
+
+        .auth_form{
+            background-color: pink;
+            width: 60%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .auth_form_box{
+            float: left;
+            width: 60%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .auth_form_box input{
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1px solid #578864;
+        }
+
+
+        .auth_form button{
+            width: 35%;
+            height: 110px;
+            float: left;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border-radius: 10px;
+            background-color: #578864;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .auth_form button:hover{
+            background-color: #4c6753;
+        }
+
+        .auth_link{
+            position: absolute;
+            right: 410px;
+            top: 230px;
+            cursor: pointer;
+        }
+
+        #signupView{
+            position: relative;
+            display: none;
+        }
+
+        #signupView .auth_link{
+            right: 445px;
+            top: 230px;
+            cursor: pointer;
+        }
+
+        #loginView.active{
+            display: block;
+        }
+
+        #signupView.active{
+            display: block;
+        }
+
+        .manage.active{
+            display: block;
+        }
+
+        #hrView{
+            position: relative;
+        }
+
+        #logoutButton{
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            top: 10px;
+            right: 25px;
+            font-size: 15px;
+        }
+
+        .auth_link img{
+            width: 20px;
+        }
+
+        .auth_link span{
+            font-size: 18px;
+        }
+
+        .auth_link h5{
+            margin-top: -25px;
+            margin-left: 20px;
+            font-weight: normal;
+        }
+
+
+
+        
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="#"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+
+        <div id="loginView">
+            <div class="title">
+                <h2>관리자 로그인</h2>
+                <img src="images/line2.png" alt="">
+            </div>
+            <div class="auth_form">
+                <div class="auth_form_box">
+                    <input type="text" id="loginId" placeholder="사번">
+                    <input type="text" id="loginPw" placeholder="비밀번호">
+                </div>
+                <button class="auth_btn" onclick="handleLogin()">로그인</button>
+            </div>
+            <div class="auth_link">
+                <span onclick="switchView('signupView')"><img src="images/register.png" alt=""><h5>관리자 등록하기</h5></span>
+            </div>
+        </div>
+
+        <div id="signupView">
+            <div class="title">
+                <h2>관리자 등록</h2>
+                <img src="images/line2.png" alt="">
+            </div>
+            <div class="auth_form">
+                <div class="auth_form_box">
+                    <input type="text" id="signupId" placeholder="사용할 사번">
+                    <input type="text" id="signupPw" placeholder="사용할 비밀번호">
+                </div>
+                <button class="auth_btn" onclick="handleSignup()">등록 완료</button>
+            </div>
+            <div class="auth_link">
+                <span onclick="switchView('loginView')"><img src="images/login.png" alt=""><h5>로그인하기</h5></span>
+            </div>
+        </div>
+
+        <div class="manage" id="hrView">
+            <div class="title">
+                <h2>식물사전 관리 모드</h2>
+                <img src="images/line2.png" alt="">
+            </div>
+            <button onclick="logout()" id="logoutButton">로그아웃</button>
+            <label for="name" id="namel">식물명</label>
+            
+            <label for="photo" id="photol">사진</label>
+            <input type="text" id="name" placeholder="수정할 식물명을 입력해주세요">
+            <input type="text" id="photo" placeholder="사진 URL을 입력해주세요 (사진은 정사각형 크기만 가능합니다)">
+            <label for="sort" id="sortl">분류</label>
+            <label for="shape" id="shapel">식물형상</label>
+            <input type="text" id="sort" placeholder="분류를 입력해주세요 (ex : 야자류)">
+            
+            
+            <input type="text" id="shape" placeholder="식물형상을 입력해주세요 (ex : 깃털 형태)">
+            <label for="depart" id="departl">과명</label>
+            <label for="height" id="heightl">높이/너비</label>
+            <input type="text" id="depart" placeholder="과명을 입력하세요 (ex : 야자과)">
+            
+            <input type="text" id="height" placeholder="높이/너비를 입력하세요 (ex : 1.5m ~ 3m (실내 기준))">
+            <label for="color" id="colorl">꽃색</label>
+            <label for="environ" id="environl">생육환경</label>
+            <input type="text" id="color" placeholder="꽃색을 입력하세요(ex : 연두색)">
+            
+            <input type="text" id="environ" placeholder="생육환경을 입력하세요(ex : 습도가 높은 곳)">
+            <label for="info" id="infol">식물정보</label>
+            <label for="info" id="newnamel">NEW 식물명</label>
+            <input type="text" id="info" placeholder="식물정보를 입력하세요(ex : NASA(나사) 선정 공기정화 식물 1위)">
+            <input type="text" id="newname" placeholder="새로운 식물명을 입력하세요">
+
+            <button onclick="updateButton()" class="update_btn">수정하기</button>
+
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        let users = JSON.parse(localStorage.getItem('hrUsersDatabase')) || [];
+
+        function switchView(viewId){
+            document.getElementById('loginView').classList.remove('active');
+            document.getElementById('signupView').classList.remove('active');
+            document.getElementById('hrView').classList.remove('active');
+
+            document.getElementById(viewId).classList.add('active');
+        }
+
+        function handleSignup(){
+            const idInput = document.getElementById('signupId').value.trim();
+            const pwInput = document.getElementById('signupPw').value.trim();
+
+            if (!idInput || !pwInput){
+                return alert("정보를 모두 입력해 주세요!");
+            }
+
+            const isExist = users.some(function(user){
+                return user.id === idInput;
+            });
+
+            if (isExist){
+                return alert("이미 사용 중인 아이디입니다.");
+            }
+
+            users.push({
+                id: idInput,
+                password: pwInput,
+            });
+            localStorage.setItem('hrUsersDatabase', JSON.stringify(users));
+
+            alert("가입이 완료되었습니다! 로그인 해주세요.")
+
+            document.getElementById('signupId').value = "";
+            document.getElementById('signupPw').value = "";
+
+            switchView('loginView');
+        }
+
+        function handleLogin(){
+            const idInput = document.getElementById('loginId').value.trim();
+            const pwInput = document.getElementById('loginPw').value.trim();
+
+            if (!idInput || !pwInput){
+                return alert("아이디와 비밀번호를 입력해 주세요.");
+            }
+
+            const user = users.find(function(u){
+                return u.id === idInput && u.password === pwInput
+            });
+
+            if (user){
+                sessionStorage.setItem('loggedInUser', user.id);
+                initApp();
+            }
+            else {
+                alert("아이디 또는 비밀번호가 틀렸습니다.");
+            }
+        }
+
+        function initApp(){
+            const loggedInUser = sessionStorage.getItem('loggedInUser');
+
+            if(loggedInUser){
+                switchView('hrView')
+            }
+            else{
+                switchView('loginView')
+            }
+        }
+
+        function logout(){
+            switchView('loginView')
+        }
+
+        function updateButton(){
+            const key = document.getElementById('name').value.trim();
+
+            const data = {
+                name: document.getElementById('name').value,
+                img: document.getElementById('photo').value,
+                type: document.getElementById('sort').value,
+                shape: document.getElementById('shape').value,
+                family: document.getElementById('depart').value,
+                size: document.getElementById('height').value,
+                color: document.getElementById('color').value,
+                env: document.getElementById('environ').value,
+                info: document.getElementById('info').value,
+                newname: document.getElementById('newname').value
+            };
+
+            if (!key){
+                alert("식물명을 입력하세요!");
+                return;
+            }
+
+            let plantData = JSON.parse(localStorage.getItem('plantData')) || {};
+
+            plantData[key] = data;
+
+            localStorage.setItem('plantData', JSON.stringify(plantData));
+
+            const plantCards = document.querySelectorAll('.plant_info');
+
+            plantCards.forEach(card => {
+                if (card.dataset.plant === key) {
+                    card.querySelector('.name').textContent = data.name;
+                    card.querySelector('img').src = data.img;
+                }
+            });
+
+            alert("수정 완료!")
+
+            document.getElementById('name').value = "";
+            document.getElementById('photo').value = "";
+            document.getElementById('sort').value = "";
+            document.getElementById('shape').value = "";
+            document.getElementById('depart').value = "";
+            document.getElementById('height').value = "";
+            document.getElementById('color').value = "";
+            document.getElementById('environ').value = "";
+            document.getElementById('info').value = "";
+            document.getElementById('code').value = "";
+            document.getElementById('newname').value = "";
+        }
+
+        initApp();
+    </script>
+
+
+</body>
+</html>

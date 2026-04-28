@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+    <title>LiumGarden</title>
+    <style>
+        .menu_list li:nth-child(3){
+            color: #424d42;
+        }
+
+        .title{
+            padding-top: 60px;
+        }
+
+        .plus_plant{
+            width: 180px;
+            padding: 15px;
+            background-color: #4a744b;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            float: right;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .plus_plant:hover{
+            background-color: #4c6753;
+        }
+
+        .myPlant{
+            margin-top: 150px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .myPlant_info{
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            border-left: 1px solid #ececec;
+            width: 300px;
+            height: 320px;
+            cursor: pointer;
+        }
+
+        .plant_info{
+            background-color: white;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .plant_info img{
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 200px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        
+        .plant_info_text{
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .name{
+            margin-bottom: 5px;
+        }
+
+        .nickname{
+            font-size: 18px;
+        }
+
+        .popupView{
+            width: 850px;
+            height: 470px;
+        }
+
+        .photo img{
+            width: 450px;
+            height: 300px;
+        }
+        
+        .popupView_content{
+            width: 300px;
+            padding-top: 45px;
+            box-sizing: border-box;
+        }
+
+        .popupView_content span{
+            width: 35%;
+            margin-bottom: 10px;
+        }
+
+        .popupView_content h4{
+            width: 65%;
+            margin-bottom: 10px;
+        }
+
+        .sub_icon button{
+            width: 90px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin-right: 15px;
+            background-color: #4a744b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 10px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .sub_icon button:hover{
+            background-color: #4c6753;
+        }
+
+        .here.active{
+            display: block;
+        }
+
+        #there.active{
+            display: none;
+        }
+
+        .here{
+            display: none;
+        }
+
+        #there{
+            padding-top: 230px;
+        }
+
+        #there h1{
+            margin-top: 120px;
+            margin-bottom: 80px;
+        }
+
+        #there button{
+            background-color: #4a744b;
+            color: white;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        #there button:hover{
+            background-color: #4c6753;
+        }
+
+        .plus_input{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -25%);
+            background-color: beige;
+            width: 500px;
+            padding: 40px;
+            border-radius: 20px;
+            display: none;
+            z-index: 999;
+        }
+
+        .input_group{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .input_group input{
+            padding: 10px;
+            border-radius: 15px;
+            border: 1px solid #4a744b;
+            outline: none;
+        }
+
+        .register_btn{
+            margin-top: 40px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 15px;
+            border: none;
+            background-color: #4a744b;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .register_btn:hover{
+            background-color: #4c6753;
+        }
+
+        .plus_input>.popupView_close{
+            font-size: 14px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <button onclick="myplantout()">로그아웃</button>
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="store.html"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="here">
+        <div class="banner">
+            <img src="images/myplant_banner.png" alt="">
+        </div>
+
+        <div class="container my_container">
+            <div class="title">
+                <h2>My Plant</h2>
+                <img src="images/line2.png" alt="">
+            </div>
+
+            <button class="plus_plant">식물 추가하기</button>
+
+            <ul class="myPlant" id="myPlantList">
+                <!-- <li class="myPlant_info">
+                    <div class="plant_info">
+                        <img src="images/my1.png" alt="" id="myPlant_img">
+                        <div class="plant_info_text">
+                            <p class="name">스칸답서스</p>
+                            <p class="nickname"><b>애칭</b></p>
+                        </div>
+                    </div>
+                </li> -->
+            </div>
+        </div>
+    </div>
+
+    <div id="there">
+        <div class="title">
+            <h2>My Plant</h2>
+            <img src="images/line2.png" alt="">
+            <h1>로그인 후 이용 가능한 서비스입니다.</h1>
+            <button onclick="logingo()">로그인 하러가기</button>
+        </div>
+    </div>
+    
+    <div class="plus_input">
+        <div class="input_group">
+            <label for="img">식물 이미지</label>
+            <input type="text" id="img" placeholder="이미지 링크" oninput="changeImg(this.value)">
+        </div>
+        <div class="input_group">
+            <label for="name">식물명</label>
+            <input type="text" id="name" placeholder="예: 스킨답서스">
+        </div>
+        <div class="input_group">
+            <label for="nickname">애칭</label>
+            <input type="text" id="nickname" placeholder="예: 귀요미">
+        </div>
+        <div class="input_group">
+            <label for="adoption">식물 입양 날</label>
+            <input type="text" id="adoption" placeholder="예: 20260423">
+        </div>
+        <!-- <div class="input_group">
+            <label for="">등록한 날짜</label>
+            <input type="text" id="" placeholder="예: ">
+        </div> -->
+        <div class="input_group">
+            <label for="size">크기</label>
+            <input type="text" id="size" placeholder="예: 10cm">
+        </div>
+        <div class="input_group">
+            <label for="watering">물주기 날</label>
+            <input type="text" id="watering" placeholder="예: 매주 월요일">
+        </div>
+
+        <button class="register_btn" onclick="register()">등록하기</button>
+
+        <div class="popupView_close">
+            X 닫기
+        </div>
+    </div>
+
+    <div class="popupView">
+        <h2>내 식물</h2>
+        <div class="photo">
+            <img src="images/my1.png" alt="">
+        </div>
+        <div class="popupView_content">
+            <div>
+                <span>식물명 :</span>
+                <h4 id="info_name">설명</h4>
+            </div>
+
+            <span>애칭 :</span>
+            <h4 id="info_nickname">설명</h4>
+
+            <span>식물 입양 날 :</span>
+            <h4 id="info_adoption">설명</h4>
+
+            <span>등록한 날짜 :</span>
+            <h4 id="info_register">설명</h4>
+
+            <span>크기 :</span>
+            <h4 id="info_size">설명</h4>
+
+            <span>물주기 날 :</span>
+            <h4 id="info_watering">설명</h4>
+        </div>
+        <div class="popupView_close">
+            X 닫기
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myplantout(){
+            sessionStorage.removeItem('loggedInUser');
+
+            window.location.href = "myplant.html#there";
+        }
+
+        function logingo(){
+            sessionStorage.removeItem('loggedInUser');
+
+            window.location.href = "user.html";
+        }
+
+        window.onload = function(){
+            const user = sessionStorage.getItem('loggedInUser');
+
+            const here = document.querySelector('.here');
+            const there = document.querySelector('#there');
+            const logoutBtn = document.querySelector('.sub_icon button');
+
+            if(user){
+                here.style.display = 'block';
+                there.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+            } else {
+                here.style.display = 'none';
+                there.style.display = 'block';
+                logoutBtn.style.display = 'none';
+            }
+        }
+
+        let myPlants=JSON.parse(localStorage.getItem('myPlant')) || [];
+
+        function changeImg(url) {
+            const imgElement = document.getElementById('img');
+            imgElement.src = url.trim() !== "" ? url : "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+        }
+
+        function render(){
+            const listElement=document.getElementById('myPlantList');
+
+            listElement.innerHTML = "";
+
+            myPlants.forEach(function(mP){
+                const li=document.createElement('li')
+                li.classList.add('myPlant_info')
+
+                li.onclick = function() {
+                    showPopup(mP);
+                };
+
+                const imgSrc = mP.img && mP.img !== "" ? mP.img : "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+
+                li.innerHTML=`
+                    <div class="plant_info">
+                        <img src="${imgSrc}" alt="키우고 있는 식물">
+                        <div class="plant_info_text">
+                            <p class="name">${mP.name}</p>
+                            <p class="nickname"><b>${mP.nickname}</b></p>
+                        </div>
+                    </div>
+                `;
+
+                listElement.appendChild(li);
+            });
+
+            localStorage.setItem('myPlant', JSON.stringify(myPlants));
+        }
+        
+        function register(){
+            const imgElement = document.getElementById('img');
+
+            const imgInput=imgElement.src;
+            const nameInput = document.getElementById("name").value.trim();
+            const nicknameInput = document.getElementById("nickname").value.trim();
+            const joinDateInput = document.getElementById("adoption").value.trim();
+
+            let adoptionDate = "";
+
+            // 💡 8자리 숫자가 정확히 입력되었는지 확인 후 변환
+            if (joinDateInput.length === 8 && !isNaN(joinDateInput)) {
+                const year = joinDateInput.substring(0, 4);  // 2026
+                const month = joinDateInput.substring(4, 6); // 04
+                const day = joinDateInput.substring(6, 8);   // 23
+                adoptionDate = `${year}.${month}.${day}`; // 2026.04.23
+            }
+            else{
+                // 8자리가 아니거나 비어있으면 입력한 그대로 저장 (혹은 "X" 처리)
+                adoptionDate = joinDateInput || "X";
+            }
+
+            const sizeInput = document.getElementById("size").value.trim();
+            const wateringInput = document.getElementById("watering").value.trim().trim();
+
+            if (!nameInput || !wateringInput) {
+                alert("식물명과 물주기 날을 입력해주세요");
+                return;
+            }
+
+            myPlants.push({
+                id: Date.now(),
+                img: imgInput,
+                name: nameInput,
+                nickname: nicknameInput,
+                adoption: adoptionDate,
+                size: sizeInput,
+                watering: wateringInput
+            });
+
+            document.getElementById("img").value = "";
+            imgElement.src = "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+            document.getElementById("name").value = "";
+            document.getElementById("nickname").value = "";
+            document.getElementById("adoption").value = "";
+            document.getElementById("size").value = "";
+            document.getElementById("watering").value = "";
+
+            render();
+        }
+
+        function showPopup(data) {
+            const popup = document.querySelector('.popupView');
+            
+            const defaultImg = "https://www.elle.co.kr/resources_old/online/org_online_image/el/9d502712-1c68-492e-97fd-309e6c043924.jpg";
+            popup.querySelector('.photo img').src = (data.img && data.img !== "") ? data.img : defaultImg;
+
+            document.getElementById('info_name').innerText = data.name;
+
+            document.getElementById('info_nickname').innerText = (data.nickname && data.nickname.trim()) ? data.nickname : "X";
+            
+            document.getElementById('info_adoption').innerText = data.adoption;
+            
+            const regDate = new Date(data.id);
+            const year = regDate.getFullYear();
+            const month = String(regDate.getMonth() + 1).padStart(2, '0');
+            const day = String(regDate.getDate()).padStart(2, '0');
+            document.getElementById('info_register').innerText = `${year}.${month}.${day}`;
+            
+            document.getElementById('info_size').innerText = (data.size && data.size.trim()) ? data.size : "X";
+            document.getElementById('info_watering').innerText = data.watering;
+
+            popup.style.display = 'block';
+        }
+
+        render();
+    </script>
+</body>
+</html>

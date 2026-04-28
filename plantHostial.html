@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+    <title>LiumGarden</title>
+    <style>
+        .header{
+            margin-top: -50px;
+        }
+
+        .container{
+           padding-top: 230px;
+        }
+        
+        .menu_list li:nth-child(5){
+            color: #424d42;
+        }
+
+        .title{
+            margin-bottom: 80px;
+        }
+
+        .plantHospital{
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .plantHospital span{
+            font-size: 20px;
+            color: white;
+            background-color: #4a744b;
+            border: 1px solid #4a744b;
+            border-radius: 5px;
+            padding: 5px;
+            width: fit-content;
+        }
+
+        .plantHospital_info{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 100px;
+        }
+
+        .info{
+            width: 300px;
+            height: 200px;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #4a744b;
+            border-radius: 15px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .info img{
+            margin-bottom: 10px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .info h4{
+            margin-bottom: 5px;
+        }
+
+        .detail_info{
+            margin-top: 100px;
+        }
+
+        .detail_info h4{
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        table{
+            text-align: center;
+            width: 100%;
+            line-height: 2.5;
+            border-collapse : collapse
+        }
+
+        th, td{
+            border-bottom: 1px solid #4a744b
+        }
+
+        th{
+            background-color: #4a744b;
+            color: white;
+        }
+
+        td:first-child{
+            background-color: #d6f0d6;
+        }
+
+        td:nth-child(2){
+            background-color: #edfaed;
+        }
+
+        td{
+            background-color: white;
+        }
+
+        .request{
+            margin-top: 100px;
+        }
+
+        .request h4{
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding: 100px;
+            border: 1px solid #4a744b;
+            border-radius: 15px;
+        }
+
+        form label{
+            margin-bottom: 5px;
+            font-size: 17px;
+        }
+        
+        form input{
+            padding: 10px;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #4a744b;
+            outline: none;
+            font-size: 16px;
+        }
+
+        form.agree{
+            display: flex;
+
+        }
+
+        input[type="checkbox"]{
+            transform: scale(1.5);
+            margin-left: 3px;
+            margin-right: 10px;
+            accent-color: #4a744b;
+        }
+
+        form textarea{
+            margin-bottom: 30px;
+            width: 100%;
+            height: 300px;
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        form p{
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .request_btn{
+            font-size: 18px;
+            color: white;
+            background-color: #4a744b;
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+        }
+
+        .request_btn:hover{
+            background-color: #4c6753;
+            font-weight: 600;
+        }
+
+        .popupView{
+            position: fixed;
+            width: 500px;
+            height: 270px;
+            padding-top: 70px;
+            padding-left: 80px;
+        }
+
+        .popupView_content{
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #4a744b;
+            border-radius: 15px;
+            height: 180px;
+        }
+
+        .popupView_content h4{
+            margin-bottom: 5px;
+        }
+
+        .popupView_content span{
+            margin-bottom: 20px;
+        }
+
+        .popupView_content p{
+            font-size: 23px;
+            font-weight: 700;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="shop.html"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title">
+            <h2>식물병원</h2>
+            <img src="images/line2.png" alt="">
+        </div>
+        
+        <div class="plantHospital" style="margin-top: 150px;">
+            <span>화분 관리 서비스</span>
+        </div>
+        <div class="plantHospital_info">
+            <div class="info">
+                <img src="images/plantHospital_info1.png" alt="">
+                <h4>STEP 01</h4>
+                <p>전문적인 관리로 늘푸름 유지</p>
+            </div>
+            <div class="info">
+                <img src="images/plantHospital_info2.png" alt="">
+                <h4>STEP 02</h4>
+                <p>식물관리 부담 해소</p>
+            </div>
+            <div class="info">
+                <img src="images/plantHospital_info3.png" alt="">
+                <h4>STEP 03</h4>
+                <p>병충해 타파</p>
+            </div>
+        </div>
+        <hr>
+        <div class="detail_info">
+            <h4>화분관리 서비스 상세 설명</h4>
+            <table>
+                <tr>
+                    <th>관리서비스</th>
+                    <th>시기</th>
+                    <th>관리 내용</th>
+                </tr>
+                <tr>
+                    <td>관수</td>
+                    <td>주 1회</td>
+                    <td>계절, 온도, 화분위치에 따른 수종별 적절한 관수</td>
+                </tr>
+                <tr>
+                    <td>입세정</td>
+                    <td>수시</td>
+                    <td>잎 청결유지 및 관상가치 증대</td>
+                </tr>
+                <tr>
+                    <td>전지 및 떡잎제거</td>
+                    <td>수시</td>
+                    <td>식물생장 촉진 및 관상가치 증대</td>
+                </tr>
+                <tr>
+                    <td>병충해 방지</td>
+                    <td>수시</td>
+                    <td>통풍불량 등으로 발생하는 각종벌레 등의 예방 및 구제</td>
+                </tr>
+                <tr>
+                    <td>영양제</td>
+                    <td>수시</td>
+                    <td>수종별 적절한 영양제 공급으로 수목상태 개선</td>
+                </tr>
+                <tr>
+                    <td>청결관리</td>
+                    <td>수시</td>
+                    <td>화분 및 화분받침대 청결관리</td>
+                </tr>
+            </table>
+        </div>
+        <div class="request">
+            <h4>서비스 신청하기</h4>
+
+            <form action="">
+                <label for="name">신청자</label>
+                <input type="text" id="name" placeholder="신청자 이름을 입력해주세요">
+                
+                <label for="title">상담제목</label>
+                <input type="text" id="title" placeholder="상담제목을 입력해주세요">
+
+                <label for="address">주소</label>
+                <input type="text" id="address" placeholder="주소를 입력해주세요">
+
+                <label for="phone">연락처</label>
+                <input type="text" id="phone" placeholder="연락처를 입력해주세요 (예: 010-1234-5678)">
+
+                <label for="plant">식물명</label>
+                <input type="text" id="plant" type placeholder="식물명을 입력해주세요">
+
+                <label for="agree">개인정보 수집 및 이용 동의</label>
+                <div class="agree">
+                    <input type="checkbox" id="agree">동의합니다
+                </div>
+
+                <label for="req_content">문의 내용</label>
+                <textarea id="req_content" placeholder="문의하고 싶은 내용을 작성해주세요"></textarea>
+
+                <p>가정집 분갈이 및 화분관리 관련 서비스는 제공되지 않습니다</p>
+
+
+                <button type="button" class="request_btn" onclick="request()">상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popupView" id="complete">
+        <div class="popupView_content">
+            <h4>신청자</h4>
+            <span id="req_name">신청자 이름</span>
+
+            <h4>작성일</h4>
+            <span id="req_date">작성일</span>
+
+            <p>상담 신청이 완료되었습니다</p>
+        </div>
+        <div class="popupView_close">
+            X 닫기
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function request() {
+            const name = document.getElementById('name').value.trim();
+            const title = document.getElementById('title').value.trim();
+            const addr = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const plant = document.getElementById('plant').value.trim();
+            const content = document.getElementById('req_content').value.trim();
+            const agree = document.getElementById('agree').checked;
+
+            // 2. 모든 필드가 채워졌는지 확인 (유효성 검사)
+            if (!name || !title || !addr || !phone || !plant || !content) {
+                alert("모든 빈칸을 채워주세요.");
+                return;
+            }
+
+            if (!agree) {
+                alert("개인정보 수집 및 이용에 동의해주세요.");
+                return;
+            }
+
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const formattedDate = `${year}.${month}.${day}`;
+
+            // 4. 팝업창에 데이터 꽂기
+            document.getElementById('req_name').innerText = name;
+            document.getElementById('req_date').innerText = formattedDate;
+
+            // 5. 팝업 열기
+            document.getElementById('complete').style.display = 'block';
+
+            document.getElementById("name").value = "";
+            document.getElementById("title").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("plant").value = "";
+            document.getElementById("req_content").value = "";
+            document.getElementById("agree").checked = false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+    <title>LiumGarden</title>
+    <style>
+        
+        .menu_list li:nth-child(4){
+            color: #424d42;
+        }
+
+        .title{
+            padding-left: 20px;
+        }
+
+        .sub2.title img{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            margin-left: 10px;
+        }
+
+        .sub2{
+            position: relative;
+        }
+
+        .banner{
+            width: 100vw;
+            height: 320px;
+        }
+
+        .banner.wrap{
+            position: relative;
+        }
+
+        .slider{
+            position: absolute;
+            top: 0;
+            width: 100vw;
+            height: 320px;
+            left: 0;
+        }
+        
+        .slider img{
+            width: 100vw;
+            height: 320px;
+            flex-shrink: 0;
+        }
+
+        .sub_title{
+            text-align: center;
+            margin-top: 150px;
+            margin-bottom: 30px;
+            font-size: 22px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .rankinglist{
+            width: 100%;
+            display: flex;
+            flex-direction: row wrap;
+        }
+
+        .rankinglist li{
+            width: 25%;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .rankinglist li:last-child{
+            margin-right: 0;
+        }
+
+        .rankinglist img{
+            width: 100%;
+            height: 330px;
+        }
+
+        .rankinglist li p{
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .rankinglist li:nth-child(2) p{
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .rankinglist li:nth-child(3) p{
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .rankinglist li:nth-child(4) p{
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .ranking_p li{
+            width: 100%;
+            padding-bottom: 3px;
+        }
+
+        .ranking_p li:first-child{
+            font-size: 15px;
+        }
+
+        .ranking_p li:nth-child(2){
+            color: gray;
+            font-size: 10px;
+        }
+
+        .ranking_p li:last-child{
+            color: red;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .petplant{
+            width: 100%;
+            height: 700px;
+            margin-top: 200px;
+            margin-bottom: 150px;
+            position: relative;
+        }
+
+        .pet{
+            float: left;
+            position: relative;
+        }
+
+        .pet::after{
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: 0.6s;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .pet:hover::after{
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .pet:hover p{
+            display: block;
+        }
+
+        .plant6:hover::after{
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .pet p{
+            position: absolute;
+            bottom: 30px;
+            font-size: 14px;
+            color: white;
+            z-index: 999;
+            padding: 5px;
+            display: none;
+        }
+
+        .pet p.price{
+            bottom: 10px;
+            font-size: 13px;
+        }
+
+        .plant1, .plant2, .plant8, .plant9{
+            width: 216.666px;
+            height: 216.666px;
+        }
+
+        .plant3, .plant7{
+            width: 433.3333px;
+            height: 216.666px;
+        }
+
+        .plant4, .plant5{
+            width: 433.3333px;
+            height: 433.3333px;
+        }
+
+        .plant5{
+            position: absolute;
+            top: 216.666px;
+        }
+
+        .plant7{
+            position: absolute;
+            left: 433.3333px;
+            top: 433.3333px;
+        }
+
+        .plant6{
+            position: absolute;
+            top: 216.666px;
+            left: 433.3333px;
+            background-color: beige;
+            width: 433.3333px;
+            height: 216.666px;
+        }
+
+        .plant6 div{
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+        }
+
+        .plant6 div img{
+            width: 100%;
+            height: 100%;
+            margin-top: 30px;
+        }
+
+        .plant8{
+            position: absolute;
+            left: 866.6666px;
+            top:  433.3333px;;
+        }
+
+        .plant9{
+            position: absolute;
+            left: 1083.3333px;
+            top:  433.3333px;
+        }
+
+        .plant1 img, .plant2 img, .plant3 img,.plant4 img, .plant5 img,.plant6 img, .plant7 img, .plant8 img, .plant9 img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .title{
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 30px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .plantlist{
+            width: 100%;
+            height: 700px;
+        }
+
+        .plantlist li{
+            width: 19.385%;
+            margin-right: 10px;
+            float: left;
+            position: relative;
+        }
+
+        .plantlist li:first-child{
+            cursor: pointer;
+        }
+
+        .plantlist li:nth-child(5){
+            margin-right: 0;
+        }
+
+        .plantlist li img{
+            width: 100%;
+        }
+
+        .planting li{
+            width: 100%;
+            padding-bottom: 3px;
+        }
+
+        .planting li:first-child{
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .planting li:nth-child(2){
+            color: gray;
+            font-size: 10px;
+        }
+
+        .planting li:nth-child(3){
+            color: red;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .planting li:last-child{
+            position: absolute;
+            bottom: 73px;
+            left: 218px;
+        }
+
+        .plantlist2{
+            width: 100%;
+            height: 400px;
+            display: flex;
+        }
+
+        .plantlist2 li{
+            width: 19.385%;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .planting.soilmove li:last-child{
+            position: absolute;
+            bottom: 140px;
+        }
+
+        .plantlist2 li:nth-child(5){
+            margin-right: 0;
+        }
+
+        .plantlist2 li img{
+            width: 100%;
+        }
+
+        .plantlist2 .planting li{
+            width: 100%;
+        }
+
+        .plantlist li:last-child{
+            margin-right: 0;
+        }
+
+        .sub3{
+            padding-top: 90px;
+        }
+
+        .planting.hashtag{
+            font-size: 120px;
+        }
+
+        .planting.hashtag li:nth-child(3){
+            font-size: 13px;
+            font-weight: 500;
+            color: red;
+        }
+
+        .planting.hashtag li:nth-child(4){
+            color: #4C6753;
+            font-weight: 300;
+            font-size: 12px;
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .planting.hashtag p, .planting.hashtag span{
+            display: block;
+            width: 80px;
+            border-radius: 50px;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            background-color: rgb(225, 240, 222);
+        }
+
+        .planting.hashtag p{
+            margin-right: 5px;
+        }
+
+        .plantlist li:nth-child(3) .planting.hashtag:last-child p{
+            width: 105px;
+        }
+
+
+        .plantlist li:nth-child(4) .planting.hashtag:last-child p{
+            width: 135px;
+        }
+
+        .plantlist li:nth-child(4) .planting.hashtag:last-child span{
+            width: 65px;
+        }
+
+        .plantlist li:nth-child(5) .planting.hashtag:last-child p{
+            width: 110px;
+        }
+
+        .plantlist li:nth-child(6) .planting.hashtag:last-child p{
+            width: 90px;
+        }
+        
+        .plantlist li:nth-child(7) .planting.hashtag:last-child p{
+            width: 90px;
+        }
+        
+        .plantlist li:nth-child(7) .planting.hashtag:last-child span{
+            width: 100px;
+        }
+
+        .plantlist li:nth-child(8) .planting.hashtag:last-child p{
+            width: 65px;
+        }
+
+        .plantlist li:nth-child(9) .planting.hashtag:last-child span{
+            width: 65px;
+        }
+
+        .plantlist li:nth-child(10) .planting.hashtag:last-child p{
+            width: 100px;
+        }
+
+        .plantlist li:nth-child(10) .planting.hashtag:last-child span{
+            width: 65px;
+        }
+
+        .heart-checkbox input[type="checkbox"] {
+            display: none;
+        }
+
+        .heart-checkbox input[type="checkbox"] {
+            display: none;
+        }
+
+        .heart-checkbox label {
+            position: relative;
+            display: inline-block;
+            width: 10px; 
+            height: 10px; 
+            background-color: #88968b; 
+            transform: rotate(-45deg);
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .heart-checkbox label::before,
+        .heart-checkbox label::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #88968b;
+            border-radius: 50%;
+        }
+
+        .heart-checkbox label::before {
+            top: -5px;
+            left: 0;
+        }
+
+        .heart-checkbox label::after {
+            top: 0;
+            left: 5px; 
+        }
+
+        .heart-checkbox input[type="checkbox"]:checked + label,
+        .heart-checkbox input[type="checkbox"]:checked + label::before,
+        .heart-checkbox input[type="checkbox"]:checked + label::after {
+            background-color: #ff4d4d;
+        }
+
+        .planting.hashtag.move li:last-child {
+            bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="shop.html"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner wrap">
+            <div class="slider s1">
+                <img src="images/b-slide1.png" alt="">
+            </div>
+            <div class="slider s2">
+                <img src="images/b-slide2.png" alt="">
+            </div>
+            <div class="slider s3">
+                <img src="images/b-slide3.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title">
+            <h2>스토어</h2>
+            <img src="images/line2.png" alt="">
+        </div>
+
+        <div class="sub2 title" style="margin-top: 150px;">
+            <p>주간 RANKING <img src="images/sub_rank.png" alt=""></p>
+        </div>
+
+        <ul class="rankinglist">
+            <li>
+                <p>1</p>
+                <img src="images/ranking1.jpg" alt="">
+                <ul class="ranking_p">
+                    <li>장미꽃 & 아스틸베 & 루스커스 믹스 부케</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>166,000원</li>
+                </ul>
+            </li>
+            <li>
+                <p>2</p>
+                <img src="images/ranking2.jpg" alt="">
+                <ul class="ranking_p">
+                    <li>카라 & 호접 & 튤립 & 샌더소니아 믹스 부케</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>159,000원</li>
+                </ul>
+            </li>
+            <li>
+                <p>3</p>
+                <img src="images/ranking3.jpg" alt="">
+                <ul class="ranking_p">
+                    <li>피플랜트</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>34,600원</li>
+                </ul>
+            </li>
+            <li>
+                <p>4</p>
+                <img src="images/ranking4.jpg" alt="">
+                <ul class="ranking_p">
+                    <li>뱅갈고무나무</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>50,000원</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="petplant">
+            <div class="plant1 pet">
+                <a href="#">
+                    <p>장미, 리시안셔스, 유칼립투스 믹스 부케(생화)</p>
+                    <p class="price">200,000원</p>
+                    <img src="images/pp1.jpg" alt="장미, 리시안셔스, 유칼립투스 믹스 부케(생화) 200,000원">
+                </a>
+            </div>
+            <div class="plant2 pet">
+                <a href="#">
+                    <p>장미, 프리지아, 라벤더, 유칼립투스 믹스 부케(조화)</p>
+                    <p class="price">65,000원</p>
+                    <img src="images/pp2.jpg" alt="장미, 프리지아, 라벤더, 유칼립투스 믹스 부케(조화) 65,000원 ">
+                </a>
+            </div>
+            <div class="plant3 pet">
+                <a href="#">
+                    <p>탁상용 소형 조화 세트</p>
+                    <p class="price">25,000원</p>
+                    <img src="images/pp3.jpg" alt="탁상용 소형 조화 세트 25,000원">
+                </a>
+            </div>
+            <div class="plant4 pet">
+                <a href="#">
+                    <p>올리브 나무(중형)</p>
+                    <p class="price">80,000원</p>
+                    <img src="images/pp4.jpg" alt="올리브 나무(중형) 80,000원">
+                </a>
+            </div>
+            <div class="plant5 pet">
+                <a href="#">
+                    <p>호접란 집들이, 개업, 축하 선물용 소</p>
+                    <p class="price">35,000원</p>
+                    <img src="images/pp5.jpg" alt="호접란 집들이, 개업, 축하 선물용 소 35,000원">
+                </a>
+            </div>
+            <div class="plant6 pet">
+                <div class="div">
+                    <img src="images/logo.png" alt="">
+                </div>
+            </div>
+            <div class="plant7 pet">
+                <a href="#">
+                    <p>모던 레시피 도자기 화분 소 중 대 3개 세트</p>
+                    <p class="price">21,900원</p>
+                    <img src="images/pp8.jpg" alt="모던 레시피 도자기 화분 소 중 대 3개 세트 21,900">
+                </a>
+            </div>
+            <div class="plant8 pet">
+                <a href="#">
+                    <p>참외 모종</p>
+                    <p class="price">3,000원</p>
+                    <img src="images/pp6.jpg" alt="참외 모종 3,000원">
+                </a>
+            </div>
+            <div class="plant9 pet">
+                <a href="#">
+                    <p>깻잎 모종</p>
+                    <p class="price">1,000원</p>
+                    <img src="images/pp7.jpg" alt="깻잎 모종 1,000원">
+                </a>
+            </div>
+        </div>
+
+        <div class="sub2 title">
+            <p>모종 <img src="images/sub.png" alt=""></p>
+        </div>
+
+        <ul class="plantlist">
+            <li>
+                <img src="images/p1-파슬리.png" alt="">
+                <ul class="planting">
+                    <li>파슬리</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>1,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart1" />
+                            <label for="heart heart1"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/p2-오이고추.png" alt="">
+                <ul class="planting">
+                    <li>오이고추</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>2,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart2" />
+                            <label for="heart heart2"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/p3-청양고추.png" alt="">
+                <ul class="planting">
+                    <li>청양고추</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>1,500원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart3" />
+                            <label for="heart heart3"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/p4-제노베제 바질.png" alt="">
+                <ul class="planting">
+                    <li>제노베제 바질</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>1,200원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart4" />
+                            <label for="heart heart4"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/p5-대추 방울 토마토.png" alt="">
+                <ul class="planting">
+                    <li>대추 방울 토마토</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>2,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart5" />
+                            <label for="heart heart5"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/p6-파프리카.png" alt="">
+                <ul class="planting">
+                    <li>미니 파프리카</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>3,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart6" />
+                            <label for="heart heart6"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/p7-오토킹 가지.png" alt="">
+                <ul class="planting">
+                    <li>오토킹 가지</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>1,500원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart7" />
+                            <label for="heart heart7"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="sub2 title">
+            흙 <img src="images/sub_soil.png" alt="">
+        </div>
+
+        <ul class="plantlist2">
+            <li>
+                <img src="images/soil1-세척 마사토 분갈이 흙.png" alt="">
+                <ul class="planting soilmove">
+                    <li>세척 마사토 분갈이용 흙</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>11,900원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart12" />
+                            <label for="heart heart12"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/soil2-원예 및 분갈이용 흙 10L.png" alt="">
+                <ul class="planting soilmove">
+                    <li>원예 및 분갈이용 흙 10L</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>3,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart13" />
+                            <label for="heart heart13"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/soil3-유기농 퇴비 분갈이 흙 18L.png" alt="">
+                <ul class="planting soilmove">
+                    <li>유기농 퇴비 분갈이 흙 18L</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>11,500원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart14" />
+                            <label for="heart heart14"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/soil4-최고급 천연 수태 풍란 자생란 이끼 토피어리 150g.png" alt="">
+                <ul class="planting soilmove">
+                    <li>최고급 천연 이끼 토피어리 150g</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>12,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart15" />
+                            <label for="heart heart15"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="sub2 title">
+            <p>화분 <img src="images/sub_myplant.png" alt=""></p>
+        </div>
+
+        <ul class="plantlist ">
+            <li>
+                <img src="images/ppp1-핑크색 향기 카네이션 가정의 달 어버이 날.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>핑크색 향기 카네이션</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>24,000원</li>
+                    <li><p>#가정의 달</p> <span>#어버이날</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart16" />
+                            <label for="heart heart16"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp2-아프리카 괴근식물 스테파니아 세파란타 국내산 수제토분.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>스테파니아 세파란타 국내산 수제토분</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>39,000원</li>
+                    <li><p>#아프리카</p> <span>#괴근식물</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart17" />
+                            <label for="heart heart17"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp3-공기정화식물 미니 테이블야자 수경재배.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>미니 테이블야자 수경재배</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>12,000원</li>
+                    <li><p>#공기정화식물</p></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart18" />
+                            <label for="heart heart18"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp4-초보자도 키우기 쉬운 미니 다육이 선인장 라떼화분.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>미니 다육이 선인장 라떼화분</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>7,500원</li>
+                    <li><p>#초보자도 키우기 쉬운</p> <span>#다육이</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart19" />
+                            <label for="heart heart19"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp5-사계절 꽃을 피우는 안스리움 릴리 핑크 볼화분.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>안스리움 릴리 핑크 볼화분</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>38,000원</li>
+                    <li><p>#사계절 꽃피우는</p></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart20" />
+                            <label for="heart heart20"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp6-행운과 번영의 머니트리 파키라 화이트 세라믹 화분.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>파키라 화이트 세라믹 화분</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>36,000원</li>
+                    <li><p>#행운 & 번영</p> <span>#머니트리</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart21" />
+                            <label for="heart heart21"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp7-행운과 부귀의 상징 아글라오네마 스노우 사파이어 화이트세라믹화분.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>스노우 사파이어 화이트세라믹화분</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>24,000원</li>
+                    <li><p>#행운 & 부귀</p> <span>#아글라오네마</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart22" />
+                            <label for="heart heart22"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp8-다육이 미니염좌 미니 큐브 화분 선인장 인테리어 반려식물.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>미니 큐브 화분 선인장 반려식물</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>6,500원</li>
+                    <li><p>#다육이</p> <span>#인테리어</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart23" />
+                            <label for="heart heart23"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp9-벗꽃 닮은 다육이 은행목 핑크 세라믹 화분.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>은행목 핑크 세라믹 화분</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>36,000원</li>
+                    <li><p>#벚꽃 닮은</p> <span>#다육이</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart24" />
+                            <label for="heart heart24"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/ppp10-파인애플 닮은 다육이 괴마옥 화이트 세라믹 화분set.png" alt="">
+                <ul class="planting hashtag move">
+                    <li>괴마옥 화이트 세라믹 화분set</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>36,000원</li>
+                    <li><p>#파인애플 닮은</p> <span>#다육이</span></li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart25" />
+                            <label for="heart heart25"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="sub2 title" style="margin-top: 150px;">
+            <p class="sub3">부케/꽃다발 <img src="images/sub_flower.png" alt="" style="width: 30px; height:30px;"></p>
+        </div>
+
+        <ul class="plantlist">
+            <li>
+                <img src="images/pppp1-퓨어 미스트 안개꽃 조화부케 꽃다발.png" alt="">
+                <ul class="planting">
+                    <li>퓨어 미스트 안개꽃 조화부케 꽃다발</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>26,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart26" />
+                            <label for="heart heart26"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/pppp2-스카이 라넌큘러스 조화 부케.png" alt="">
+                <ul class="planting">
+                    <li>스카이 라넌큘러스 조화 부케</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>36,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart27" />
+                            <label for="heart heart27"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images//pppp3-브리즈 라넌큘러스 조화 꽃다발 세트.png" alt="">
+                <ul class="planting">
+                    <li>브리즈 라넌큘러스 조화 꽃다발 세트</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>33,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart28" />
+                            <label for="heart heart28"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/pppp4-레모니 거베라 데이지 조화 부케 셀프웨딩 꽃다발.png" alt="">
+                <ul class="planting">
+                    <li>레모니 거베라 데이지 조화 꽃다발</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>35,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart29" />
+                            <label for="heart heart29"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/pppp5-블루 코스모스 조화 꽃다발 부케.png" alt="">
+                <ul class="planting">
+                    <li>블루 코스모스 조화 꽃다발 부케</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>28,500원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart38" />
+                            <label for="heart heart38"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/pppp6-화이트데이지 조화 부케 인테리어 소품.png" alt="">
+                <ul class="planting">
+                    <li>화이트데이지 조화 부케</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>34,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart30" />
+                            <label for="heart heart30"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/pppp7-하트 투 호접난 카네이션 꽃바구니.png" alt="">
+                <ul class="planting">
+                    <li>-하트 투 호접난 카네이션 꽃바구니</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>27,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart31" />
+                            <label for="heart heart31"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/pppp8-기브 투 호접난 카네이션 꽃바구니.png" alt="">
+                <ul class="planting">
+                    <li>기브 투 호접난 카네이션 꽃바구니</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>35,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart32" />
+                            <label for="heart heart32"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <img src="images/pppp9-누리 카네이션 데이지 조화.png" alt="">
+                <ul class="planting">
+                    <li>누리 카네이션 데이지 조화</li>
+                    <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                    <li>34,000원</li>
+                    <li>
+                        <div class="heart-checkbox">
+                            <input type="checkbox" id="heart heart33" />
+                            <label for="heart heart33"></label>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const STORAGE_KEY = 'likedPlants';
+        
+        const allPlantLists = document.querySelectorAll('.plantlist, .plantlist2');
+
+        if (allPlantLists.length === 0) return;
+
+        const savedPlants = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+        allPlantLists.forEach(listContainer => {
+            const checkboxes = listContainer.querySelectorAll('.heart-checkbox input[type="checkbox"]');
+            
+            checkboxes.forEach(checkbox => {
+                if (savedPlants.some(plant => plant.id === checkbox.id)) {
+                    checkbox.checked = true;
+                }
+
+                checkbox.addEventListener('change', function() {
+                    const plantingUl = this.closest('.planting');
+                    const topLi = plantingUl.closest('li'); 
+                    
+                    const plantData = {
+                        id: this.id,
+                        imgSrc: topLi.querySelector('img').getAttribute('src'),
+                        name: plantingUl.querySelector('li:nth-child(1)').textContent.trim(),
+                        price: plantingUl.querySelector('li:nth-child(3)').textContent.trim()
+                    };
+
+                    let currentLikedPlants = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+                    if (this.checked) {
+                        if (!currentLikedPlants.some(p => p.id === plantData.id)) {
+                            currentLikedPlants.push(plantData);
+                        }
+                    } else {
+                        currentLikedPlants = currentLikedPlants.filter(p => p.id !== plantData.id);
+                    }
+
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(currentLikedPlants));
+                    console.log("장바구니 담김! 현재 데이터:", currentLikedPlants);
+                });
+            });
+        });
+    });
+</script>

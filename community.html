@@ -1,0 +1,917 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <title>LiumGarden</title>
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+
+    <style>
+        .menu_list li:nth-child(2){
+            color: #424d42;
+        }
+
+        .banner img{
+            width: 100%;
+            height: 320px;
+        }
+
+        .ranking{
+            width: 100%;
+            height: 600px;
+            position: relative;
+            margin-top: 40px;
+            padding-bottom: 50px;
+        }
+
+        .ranking_plant{
+            width: 400px;
+            height: 655px;
+            background-color: beige;
+            position: absolute;
+            left: 200px;
+            border-radius: 12px;
+        }
+
+        .ranking_plant h3, .ranking_gardener h3{
+            text-align: center;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            text-shadow: 1px 1px 10px #8ba31e;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .top{
+            width: 100%;
+            height: 200px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .top_one{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 9999;
+        }
+
+        .top_two{
+            position: absolute;
+            text-align: center;
+            left: 30px;
+            top: 20px;
+        }
+
+        .top_three{
+            position: absolute;
+            text-align: center;
+            right: 30px;
+            top: 20px;
+        }
+
+        .top img{
+            border-radius: 50%;
+        }
+
+        .top_one img{
+            width: 130px;
+            height: 130px;
+            border: 4px solid rgb(235, 139, 13);
+        }
+
+        .top_one h2{
+            color: rgb(255, 68, 68);
+        }
+
+        .top_two h2, .top_three h2{
+            color: rgb(49, 49, 49);
+        }
+
+        .top_two img{
+            width: 110px;
+            height: 110px;
+        }
+
+        .top_three img{
+            width: 110px;
+            height: 110px;
+        }
+
+        .top span{
+            font-size: 14px;
+            color: rgb(255, 68, 68);
+        }
+
+        .rest{
+            width: 100%;
+            height: 350px;
+            position: relative;
+        }
+
+        .rest_one{
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            height: 60px;
+        }
+
+        .rest_two{
+            position: absolute;
+            top: 120px;
+            width: 100%;
+            height: 60px;
+        }
+
+        .rest_three{
+            position: absolute;
+            top: 200px;
+            width: 100%;
+            height: 60px;
+        }
+
+        .rest_four{
+            position: absolute;
+            top: 280px;
+            width: 100%;
+            height: 60px;
+        }
+
+        .rest h2{
+            float: left;
+            width: 20%;
+            text-align: center;
+            line-height: 60px;
+            color: gray;
+        }
+
+        .rest_rest_one{
+            width: 75%;
+            background-color: #ffffff;
+            float: left;
+            height: 60px;
+            border-radius: 30px;
+        }
+
+        .rest img{
+            float: left;
+            border-radius: 50%;
+            margin-right: 50px;
+        }
+
+        .rest img{
+            width: 50px;
+            margin-top: 5px;
+            margin-left: 7px;
+        }
+
+        .rest h4{
+            text-align: center;
+            line-height: 60px;
+            float: left;
+        }
+
+        .rest span{
+            text-align: center;
+            line-height: 60px;
+            float: right;
+            margin-right: 20px;
+            font-size: 14px;
+            color: rgb(255, 68, 68);
+        }
+
+        .ranking_gardener{
+            width: 400px;
+            height: 655px;
+            background-color: beige;
+            position: absolute;
+            left: 700px;
+            border-radius: 12px;
+        }
+
+        .community{
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .community_write{
+            position: relative;
+            width: 100%;
+            background-color: rgb(241, 241, 241);
+            height: 50px;
+            margin-bottom: 30px;
+        }
+
+        .community_write h4{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            width: 100px;
+            height: 40px;
+            background-color: #578864;
+            color: white;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .community_write h4:hover{
+            background-color: #4c6753;
+        }
+
+        .popupView{
+            display: none;
+            height: fit-content;
+            width: 500px;
+            padding: 40px;
+        }
+
+        .popupView h2{
+            text-align: center;
+            margin-top: -3px;
+        }
+
+        .write_content{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .write_content label{
+            padding-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .write_content input{
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #578864;
+            border-radius: 15px;
+            padding: 10px;
+            outline: none;
+        }
+
+        .write_content button{
+            background-color: #578864;
+            color: white;
+            margin-top: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+        .write_content button:hover{
+            background-color: #4c6753;
+        }
+
+        #community_list{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 0;
+            margin-bottom: 50px;
+        }
+
+        #community_list li{
+            width: 32%;
+        }
+
+        .box{
+            width: 100%;
+            height: 537px;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 2px solid #dfdede;
+        }
+
+        .box_header{
+            width: 100%;
+            height: 70px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+        }
+
+        .header_profile{
+            float: left;
+            margin-right: 30px;
+        }
+
+        .header_profile img{
+            width: 70px;
+            border-radius: 50%;
+            border: 2px solid #4c6753;
+        }
+
+        .box_header h3{
+            font-size: 20px;
+            line-height: 75px;
+        }
+
+        .box .content{
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .content span{
+            font-size: 15px;
+            color: gray;
+        }
+
+        .content p{
+            font-size: 18px;
+            padding-bottom: 5px;
+        }
+
+        .content img{
+            width: 100%;
+            display: flex;
+            margin-bottom: 15px;
+            height: 300px;
+        }
+
+        .comment{
+            width: 100%;
+        }
+
+        .comment p{
+            float: left;
+            margin-right: 10px;
+            font-size: 14px;
+            color: rgb(255, 68, 68);
+        }
+
+        .comment span{
+            float: left;
+            width: 50%;
+            font-size: 14px;
+            display: flex;
+            color: black;
+        }
+
+        p.comment_icon{
+            color: black;
+            margin-left: -155px;
+            display: block;
+        }
+
+        .comment img{
+            width: 18px;
+            margin-left: 10px;
+            margin-top: 1px;
+        }
+
+        .community_link{
+            width: 100%;
+            height: 710px;
+            position: relative;
+        }
+
+        .community_link .sub_title{
+            margin-bottom: 30px;
+        }
+
+        .youtubeone{
+            margin-top: 20px;
+            margin-right: 170px;
+            border-radius: 12px;
+        }
+
+        .youtubetwo{
+            margin-top: 20px;
+            border-radius: 12px;
+            position: absolute;
+            top: 420px;
+            left: 0;
+        }
+
+        .youtube_info{
+            position: absolute;
+            right: 0;
+            top: 80px;
+        }
+
+        .youtube_info2{
+            position: absolute;
+            right: 0;
+            top: 440px;
+        }
+
+        .info_header{
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgb(212, 212, 212);
+            color: black;
+        }
+
+        .boxlist{
+            display: flex;
+        }
+
+        .boxlist li{
+            background-color: #c7e2ce;
+            box-sizing: border-box;
+            padding: 10px;
+            position: relative;
+            width: 300px;
+            height: 230px;
+            margin-right: 20px;
+            margin-top: 20px;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
+        }
+
+        .boxlist li:last-child{
+            background-color: #9db4a3;
+            color: #4c6753;
+        }
+
+        .info_inner{
+            width: 250px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        b.red{
+            color: red;
+        }
+
+        .ranking h2{
+            margin-bottom: 5px;
+        }
+
+        .title img{
+            margin-bottom: 100px;
+        }
+
+        .sub_title{
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .sub_title img{
+            position: absolute;
+            bottom: 0;
+            margin-left: 10px;
+        }
+
+        .title{
+            padding-top: 50px;
+        }
+
+        .popular_title{
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .popular_title img{
+            width: 20px;
+        }
+
+        .popularlist{
+            display: flex;
+            justify-content: space-between ;
+        }
+
+        .popularlist li{
+            width: 24%;
+            margin-right: 10px;
+        }
+
+        .popularlist li:last-child{
+            margin-right: 0;
+        }
+
+        .popularlist li img{
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .imgbox p{
+            margin-top: 10px;
+        }
+
+        .imgbox span{
+            font-size: 13px;
+            color: rgb(163, 163, 163);
+        }
+
+        .heart{
+            color: rgb(255, 68, 68);
+            margin-bottom: 40px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="shop.html"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <img src="images/community_banner.PNG" alt="">
+    </div>
+    <div class="container">
+        
+        <div class="title" >
+            <h2>커뮤니티</h2>
+            <img src="images/line2.png" alt="">
+        </div>
+
+        <div class="sub_title" style="margin-top: 50px;">
+            랭킹
+            <img src="images/sub_rank.png" alt="">
+        </div>
+
+        <div class="ranking">
+            <div class="ranking_plant">
+                <h3>TOP7 식물</h3>
+                <div class="top">
+                    <div class="top_one">
+                        <h2>1</h2>
+                        <img src="images/one.jpg" alt="">
+                        <h4>유칼립투스</h4>
+                        <span>♥ 522</span>
+                    </div>
+                    <div class="top_two">
+                        <h2>2</h2>
+                        <img src="images/two.jpg" alt="">
+                        <h4>산세베리아</h4>
+                        <span>♥ 416</span>
+                    </div>
+                    <div class="top_three">
+                        <h2>3</h2>
+                        <img src="images/three.png" alt="">
+                        <h4>스킨답서스</h4>
+                        <span>♥ 395</span>
+                    </div>
+                </div>
+                <div class="rest">
+                    <div class="rest_one">
+                        <h2>4</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/four.jpg" alt="">
+                            <h4>몬스테라</h4>
+                            <span>♥ 342</span>
+                        </div>
+                    </div>
+                    <div class="rest_two">
+                        <h2>5</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/five.jpg" alt="">
+                            <h4>문샤인</h4>
+                            <span>♥ 289</span>
+                        </div>
+                    </div>
+                    <div class="rest_three">
+                        <h2>6</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/six.jpg" alt="">
+                            <h4>홍콩야자</h4>
+                            <span>♥ 265</span>
+                        </div>
+                    </div>
+                    <div class="rest_four">
+                        <h2>7</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/seven.jpg" alt="">
+                            <h4>상추</h4>
+                            <span>♥ 176</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="ranking_gardener">
+                <h3>TOP7 가드너</h3>
+                <div class="top">
+                    <div class="top_one">
+                        <h2>1</h2>
+                        <img src="images/cone.PNG" alt="">
+                        <h4>찰리 브라운</h4>
+                        <span>♥ 462</span>
+                    </div>
+                    <div class="top_two">
+                        <h2>2</h2>
+                        <img src="images/ctwo.PNG" alt="">
+                        <h4>햇살 정원사</h4>
+                        <span>♥ 402</span>
+                    </div>
+                    <div class="top_three">
+                        <h2>3</h2>
+                        <img src="images/cthree.png" alt="">
+                        <h4>물주는 사람</h4>
+                        <span>♥ 373</span>
+                    </div>
+                </div>
+                <div class="rest">
+                    <div class="rest_one">
+                        <h2>4</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/cfour.png" alt="">
+                            <h4>플럼</h4>
+                            <span>♥ 328</span>
+                        </div>
+                    </div>
+                    <div class="rest_two">
+                        <h2>5</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/cfive.png" alt="">
+                            <h4>미피</h4>
+                            <span>♥ 274</span>
+                        </div>
+                    </div>
+                    <div class="rest_three">
+                        <h2>6</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/csix.png" alt="">
+                            <h4>꽃집사</h4>
+                            <span>♥ 265</span>
+                        </div>
+                    </div>
+                    <div class="rest_four">
+                        <h2>7</h2>
+                        <div class="rest_rest_one">
+                            <img src="images/cseven.png" alt="">
+                            <h4>풍경과 함께</h4>
+                            <span>♥ 202</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub_title" style="margin-top: 170px; margin-left: 25px;">
+            게시판 <img src="images/sub_commu.png" alt="">
+        </div>
+        <div class="community">
+            <div class="community_write">
+                <h4>글쓰기</h4>
+            </div>
+            <div class="community_popular">
+                <div class="popular_title">
+                    인기글 <img src="images/community_popular.png" alt="">
+                </div>
+                <ul class="popularlist">
+                    <li>
+                        <div class="imgbox">
+                            <img src="images/popular1.png" alt="">
+                            <p>새 다육이를 들여왔어요!</p>
+                            <span>#너무 맘에 든다 #예쁘게 키울게요!</span>
+                            <div class="heart">♥1251</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imgbox">
+                            <img src="images/popular2.jpg" alt="">
+                            <p>멋진 식집사가 되기 위해 책을 구매해봤어...</p>
+                            <span>#식물 도서 #식집사가 되기 위한 여정</span>
+                            <div class="heart">♥1083</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imgbox">
+                            <img src="images/popular3.jpg" alt="">
+                            <p>토마토 키우기 - 싹이 꽤 자랐어요!</p>
+                            <span>#토마토 키우기</span>
+                            <div class="heart">♥954</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imgbox">
+                            <img src="images/popular4.png" alt="">
+                            <p>몬스테라 너무 예쁘죠!ㅎㅎ</p>
+                            <span>#몬스테라 #너무 맘에 든다</span>
+                            <div class="heart">♥601</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="popular_title">
+                새 게시글
+            </div>
+            <ul id="community_list">
+                
+            </ul>
+            <div class="community_link">
+                <div class="sub_title" style="margin-top: 170px;">
+                    유튜브 <img src="images/sub_you.png" alt="">
+                </div>
+                <iframe width="500" height="280" src="https://www.youtube.com/embed/FglTruERLUs?si=t8lDioxPnOKrYuS5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="youtubeone"></iframe>
+                <div class="youtube_info">
+                    <div class="info_header">
+                        <b class="red">TIP! </b>이런 분들께 추천드려요!
+                    </div>
+                    <div class="info_box">
+                        <ul class="boxlist">
+                            <li>
+                                <div class="info_inner">
+                                    <p>1. 식물을 키우려는데 무슨 도구를 사야될지 모르겠어요</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info_inner">
+                                    <p>2. 도구에 대한 정보를 얻고 싶어요</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <iframe  width="500" height="280" src="https://www.youtube.com/embed/p0jBfNYg9WU?si=P-5dsWNqXmYiO4mY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="youtubetwo"></iframe>
+                <div class="youtube_info2">
+                    <div class="info_header">
+                        <b class="red">TIP! </b>이런 분들께 추천드려요!
+                    </div>
+                    <div class="info_box">
+                        <ul class="boxlist">
+                            <li>
+                                <div class="info_inner">
+                                    <p>1. 인테리어용 식물을 키우고 싶어요</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info_inner">
+                                    <p>2. 키우기 쉬우면서 집에 두면 예쁜 식물 있을까요?</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popupView">
+        <h2>글쓰기</h2>
+        <div class="write_content">
+            <label for="profile">프로필 사진</label>
+            <input type="url" id="profile" placeholder="이미지 링크 (정사각형 이미지로 업로드 해주세요)">
+
+            <label for="name">사용자 이름</label>
+            <input type="text" id="name" placeholder="사용자 이름을 입력해주세요">
+
+            <label for="title">제목</label>
+            <input type="text" id="title" placeholder="게시글의 제목을 입력해주세요">
+
+            <label for="photo">게시물 사진</label>
+            <input type="url" id="photo" placeholder="게시할 사진의 링크를 입력해주세요">
+
+            <label for="tag">태그</label>
+            <input type="text" id="tag" placeholder="태그를 입력해주세요 (예: #방울토마토)">
+
+            <button onclick="addButton()" id="add_btn">작성하기</button>
+        </div>
+        
+        <div class="popupView_close">
+            X 닫기
+        </div>
+    </div>
+
+    <script>
+
+        let todos = JSON.parse(localStorage.getItem("myTodos")) || [];
+
+        function save(){
+            localStorage.setItem("myTodos", JSON.stringify(todos));
+        }
+
+        function render(){
+            const listElement = document.getElementById("community_list");
+            listElement.innerHTML = "";
+
+            todos.forEach(todo => {
+                const li = document.createElement("li");
+
+                li.innerHTML = `
+                <div class="box">
+                    <div class = "box_header">
+                        <div class="header_profile">
+                            <img src="${todo.profile}" alt="">
+                        </div>
+                        <h3>${todo.name} 가드너</h3>
+                    </div>
+                    <div class = "content">
+                        <img src="${todo.photo}" alt="">
+                        <p>${todo.title}</p>
+                        <span>${todo.tag}</span>
+                    </div>
+                    <div class="comment">
+                        <p>♥ ${todo.heart}</p>
+                        <span><img src="images/comment.PNG" alt=""></span><p class="comment_icon"> ${todo.comment}</p>
+                    </div>
+                </div>
+            `;
+
+            listElement.appendChild(li);
+            });
+
+            
+        }
+
+        function addButton(){
+            const profile = document.getElementById('profile').value.trim();
+            const name = document.getElementById('name').value.trim();
+            const title = document.getElementById('title').value.trim();
+            const photo = document.getElementById('photo').value.trim();
+            const tag = document.getElementById('tag').value.trim();
+
+            if (!profile || !name || !title || !photo || !tag){
+                alert("프로필 사진, 사용자 이름, 제목, 게시물 사진, 태그를 모두 입력해 주세요!");
+                return
+            }
+
+            const heart = Math.floor(Math.random() * 100) + 1;
+            const comment = Math.floor(Math.random() * 100) + 1;
+
+            todos.push({
+                id: Date.now(),
+                profile: profile,
+                name: name,
+                title: title,
+                photo: photo,
+                tag: tag,
+                heart : heart,
+                comment: comment
+            });
+
+            save();
+            render();
+
+            document.getElementById('profile').value = "";
+            document.getElementById('name').value = "";
+            document.getElementById('title').value = "";
+            document.getElementById('photo').value = "";
+            document.getElementById('tag').value = "";
+        }
+        render();
+    </script>
+    
+
+</body>
+</html>

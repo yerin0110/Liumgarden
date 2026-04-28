@@ -1,0 +1,315 @@
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-1Thin.woff') format('woff');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Escoredream';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+    font-weight: 900;
+    font-display: swap;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    color: inherit;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    font-family: 'Escoredream';
+    color: #4a744b;
+    position: relative;
+}
+
+.header{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    position: fixed;
+    z-index: 9999999;
+    background-color: white;
+}
+
+.header_logo{
+    width: 120px;
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.header_logo img{
+    width: 100%;
+}
+
+.sub_icon{
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.sub_icon li{
+    float: left;
+    width: 60px;
+}
+
+.sub_icon li img{
+    height: 30px;
+}
+
+.menu_box{
+    width: 100%;
+    height: 48px;
+    position: absolute;
+    top: 150px;
+    border-top: 1px solid rgb(221, 221, 221);
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.menu_list{
+    width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 auto;
+}
+
+.menu_list li{
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(158, 158, 158);
+}
+
+.menu_list li a:hover{
+    color: #424d42;
+}
+
+
+.container{
+    width: 1300px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.banner{
+    width: 100%;
+    height: 320px;
+    padding-top: 200px;
+}
+
+.banner img{
+    width: 100%;
+    height: 320px;
+}
+
+
+.title{
+    text-align: center;
+}
+
+.title h2{
+    font-size: 26px;
+}
+
+.title img{
+    width: 320px;
+}
+
+.popupView{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -25%);
+    background-color: beige;
+    width: 1000px;
+    height: 650px;
+    padding: 40px;
+    border-radius: 20px;
+    display: none;
+}
+
+.popupView h2{
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+
+.popupView .photo{
+    width: 450px;
+    height: 300px;
+    float: left;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.popupView .photo img{
+    border-radius: 15px;
+}
+
+.popupView_content{
+    width: 300px;
+    height: 300px;
+    float: left;
+}
+
+.popupView_content h4{
+    float: left;
+    width: 80%;
+}
+
+.popupView_content span{
+    float: left;
+    width: 20%;
+}
+
+.popupView_close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 27px;
+    background-color: rgb(159, 182, 115);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 27px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+}
+
+.footer{
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+    height: 250px;
+    margin-top: 300px;
+    padding-top: 60px;
+}
+
+.footer_container{
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.footer_one{
+    float: left;
+    width: 40%;
+    height: 250px;
+    position: relative;
+}
+
+.footer_logo{
+    position: absolute;
+    left: 50px;
+    top: -40px;
+}
+
+.footer_logo img{
+    width: 80px;
+}
+
+.footer_content{
+    position: absolute;
+    top: 60px;
+    left: 50px;
+}
+
+.footer_two{
+    float: left;
+    width: 30%;
+    height: 250px;
+    position: relative;
+}
+
+.footer_two_list{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.footer_two_list li{
+    height: 38px;
+}
+
+.footer_three{
+    float: left;
+    width: 30%;
+    height: 250px;
+    position: relative;
+}
+
+.footer_three_list{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.footer_three_list li{
+    height: 38px;
+}

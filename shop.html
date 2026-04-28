@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <title>LiumGarden</title>
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+    <style>
+        .header{
+            margin-top: -300px;
+        }
+
+        .footer_content p{
+            margin-top: 0;
+        }
+
+        .container{
+            margin-top: 300px;
+        }
+
+        .sub_title{
+            margin-top: 150px;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: 600;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .shop{
+            width: 100%;
+            border-top: 1px solid rgb(202, 202, 202);
+        }
+
+        .shop_header{
+            display: flex;
+            justify-content: space-between;
+            height: 50px;
+            background-color: rgb(233, 233, 233);
+            box-sizing: border-box;
+            line-height: 50px;
+        }
+
+        .shop_header li{
+            text-align: center;
+            color: rgb(87, 87, 87);
+        }
+
+        .shop_header li:first-child{
+            width: 50%;
+        }
+
+        .shop_header li:nth-child(2){
+            width: 20%;
+        }
+
+        .shop_header li:nth-child(3){
+            width: 10%;
+        }
+
+        .shop_header li:nth-child(4){
+            width: 10%;
+        }
+
+        .shop_header li:last-child{
+            width: 10%;
+        }
+
+        .shop-container{
+            display: flex;
+            border-bottom: 1px solid rgb(206, 206, 206);
+        }
+
+        .shop-container img{
+            width: 150px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 20px;
+        }
+
+        .shoping-list{
+            display: flex;
+            width: 90%;
+            text-align: center;
+            padding-left: 20px;
+            box-sizing: border-box;
+            color: black;
+        }
+
+        .option-list{
+            height: 100px;
+            margin-top: 60px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-list li{
+            width: 100%;
+        }
+
+        .shoping-list li .option-list li:first-child{
+            width: 100%;
+            color: gray;
+            font-size: 15px;
+            text-align: left;
+        }
+
+        .shoping-list li .option-list li:nth-child(2){
+            font-size: 18px;
+            width: 100%;
+            text-align: left;
+            padding-top: 10px;
+        }
+
+        .shoping-list li .option-list li:last-child{
+            font-size: 13px;
+            width: 100%;
+            text-align: left;
+            padding-top: 5px;
+            color: red;
+            font-weight: 400;
+        }
+
+        .shoping-list li:first-child{
+            width: 41.5%;
+        }
+
+        .shoping-list li:nth-child(2){
+            width: 23.5%;
+        }
+
+        select{
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            margin-top: 90px;
+        }
+
+        p{
+            margin-top: 90px;
+        }
+
+        .shoping-list li:nth-child(3){
+            width: 11.5%;
+        }
+
+        .shoping-list li:nth-child(4){
+            width: 11.5%;
+            color: red;
+        }
+
+        .shoping-list li:nth-child(5){
+            width: 12%;
+            color: red;
+        }
+
+        .del-btn{
+            background-color: white;
+            border: 1px solid red;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .del-btn:hover{
+            background-color: rgb(179, 179, 179);
+            color: white;
+            border: 1px solid rgb(179, 179, 179);
+        }
+
+        .all-delbtn{
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid red;
+            color: red;
+            background-color: white;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="#"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title">
+            <h2>장바구니</h2>
+            <img src="images/line2.png" alt="">
+        </div>
+
+        <div class="sub_title" style="margin-top: 150px;">
+            <p>쇼핑 리스트</p>
+            <button class="all-delbtn" onclick="deleteAllShop()">전체삭제</button>
+        </div>
+
+        
+
+        <div class="shop">
+            <ul class="shop_header">
+                <li>제품명/옵션명</li>
+                <li>수량</li>
+                <li>제품 금액</li>
+                <li>주문 금액</li>
+                <li>선택</li>
+            </ul>
+            <ul class="shop_content" id="favorite-list">
+            </ul>
+        </div>
+        <div class="shop_footer">
+            <p></p>
+        </div>
+    </div>
+    
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const STORAGE_KEY = 'likedPlants';
+        const favoriteListContainer = document.getElementById('favorite-list');
+        
+        let likedPlants = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+        if (likedPlants.length === 0) {
+            favoriteListContainer.innerHTML = '<li style="text-align:center; padding: 50px;">장바구니가 비어있습니다. 스토어에서 찜해주세요!🌱</li>';
+            if(shopFooter) shopFooter.innerHTML = '';  
+            return;
+        }
+
+        likedPlants.forEach(plant => {
+            const li = document.createElement('li');
+            
+            const unitPrice = parseInt(plant.price.replace(/[^0-9]/g, ''), 10);
+            const defaultTotal = unitPrice.toLocaleString() + '원';
+            
+            li.innerHTML = `
+            <div class="shop-container">
+                <img src="${plant.imgSrc}" alt="${plant.name}">
+                <ul class="shoping-list">
+                    <li>
+                        <ul class='option-list'>
+                            <li>MAKE YOUR LIFE WITH LIUM GARDEN</li>
+                            <li>${plant.name}</li>
+                            <li>최대 구매가능 수량: 5개</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <select class="qty-select" name="quantity" onchange="updateTotal(this, ${unitPrice})">
+                            <option value="1">1개</option>
+                            <option value="2">2개</option>
+                            <option value="3">3개</option>
+                            <option value="4">4개</option>
+                            <option value="5">5개</option>
+                        </select>
+                    </li>
+                    <li><p>${plant.price}</p></li>
+                    <li class="total-price"><p>${defaultTotal}</p></li>
+                    <li><p><button class="del-btn" onclick="deleteShop('${plant.id}')">삭제</button></p></li>
+                </ul>
+            </div>
+            `;
+            
+            favoriteListContainer.appendChild(li);
+        });
+
+        calculateGrandTotal();
+    });
+
+    function deleteShop(id) {
+        if(confirm('찜 목록에서 삭제하시겠습니까?')) {
+            let currentPlants = JSON.parse(localStorage.getItem('likedPlants')) || [];
+            currentPlants = currentPlants.filter(plant => plant.id !== id);
+            localStorage.setItem('likedPlants', JSON.stringify(currentPlants));
+            location.reload(); 
+        }
+    }
+
+    function updateTotal(selectElement, unitPrice) {
+        const qty = parseInt(selectElement.value, 10);
+        const totalPrice = qty * unitPrice;
+        
+        const ul = selectElement.closest('.shoping-list');
+        const priceText = ul.querySelector('.total-price p'); 
+        
+        if (priceText) {
+            priceText.textContent = totalPrice.toLocaleString() + '원';
+        }
+
+        calculateGrandTotal();
+    }
+
+    function calculateGrandTotal() {
+        const totalPrices = document.querySelectorAll('.total-price p');
+        let grandTotal = 0;
+        totalPrices.forEach(priceEl => {
+            const priceNumber = parseInt(priceEl.textContent.replace(/[^0-9]/g, ''), 10);
+            grandTotal += priceNumber;
+        });
+
+        const footerP = document.querySelector('.shop_footer p');
+        if (footerP) {
+            footerP.innerHTML = `<span style="font-size: 22px;  color: #333;">총 결제 금액 : ${grandTotal.toLocaleString()}원</span>`;
+            
+            footerP.style.textAlign = 'right';
+            footerP.style.padding = '30px 20px';
+        }
+    }
+
+    function deleteAllShop() {
+         if(confirm('장바구니의 모든 상품을 비우시겠습니까?')) {
+            localStorage.removeItem('likedPlants');
+            
+            const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            allCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+        location.reload();
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="liumgarden.css">
+    <script src="jquery.min.js"></script>
+    <script src="liumgarden.js"></script>
+    <script src="plant_info.js"></script>
+    <title>LiumGarden</title>
+    <style>
+        .menu_list li:nth-child(1){
+            color: #424d42;
+        }
+
+        .title h2{
+            padding-top: 50px;
+        }
+
+        .title img{
+            margin-bottom: 100px;
+        }
+
+        input.search{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 15px;
+            border: none;
+            background-color: beige;
+            border-radius: 30px;
+            font-size: 15px;
+            outline: none;
+            width: 350px;
+        }
+
+        .dic_info{
+            display: flex;
+            justify-content: flex-start;
+            gap: 35.9px;
+            margin-bottom: 40px;
+        }
+        
+        .dic_info_plus{
+            display: none;
+            position: relative;
+        }
+
+        .dic_info_plus.active {
+            display: flex;
+        }
+        
+        .plant_info{
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .plant_info img{
+            width: 155px;
+            height: 155px;
+            border-radius: 10px;
+        }
+
+        .plant_info p{
+            font-weight: 500;
+        }
+
+        .more_btn{
+            width: 300px;
+            padding: 15px;
+            background-color: #4a744b;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            margin-left: 500px;
+            cursor: pointer;
+        }
+
+        .more_btn:hover{
+            background-color: #4c6753;
+        }
+
+        .dic_popup{
+            height: 500px;
+        }
+
+        .dic_popup .photo img{
+            width: 300px;
+            height: 300px;
+        }
+
+        .popupView h2{
+            margin-left: 0;
+            text-align: center;
+        }
+
+        .photo{
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .photo img{
+            height: 300px;
+        }
+
+        .popupView_content{
+            width: 400px;
+            height: fit-content;
+            border: 1px solid #4a744b;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        .popupView_content h4{
+            width: 75%;
+            margin-bottom: 15px;
+        }
+
+        .popupView_content span{
+            width: 25%;
+        }
+
+        .dic_info_plus img{
+            display: flex;
+        }
+
+        .dic_info_plus p{
+            position: absolute;
+            bottom: -27px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header_logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="">
+            </a>
+        </div>
+
+        <ul class="sub_icon">
+            <li><a href="user.html"><img src="images/man.png" alt=""></a></li>
+            <li><a href="#"><img src="images/cart.png" alt=""></a></li>
+            <li><a href="manager.html"><img src="images/lock.png" alt=""></a></li>
+        </ul>
+        <div class="menu_box">
+            <ul class="menu_list">
+                <li><a href="dic.html">식물사전</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="myPlant.html">My Plant</a></li>
+                <li><a href="store.html">스토어</a></li>
+                <li><a href="plantHostial.html">식물병원</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <img src="images/dic_banner.png" alt="">
+    </div>
+
+    <div class="container dic_container">
+        <div class="title">
+            <h2>식물사전</h2>
+            <img src="images/line2.png" alt="">
+        </div>
+
+        <input type="text" placeholder="🔍 식물 이름을 검색하세요." class="search" id="search" oninput="searchPlant()">
+
+        <div class="dictionary">
+            <div class="dic_info">
+                <div class="plant_info" data-plant="몬스테라">
+                    <img src="images/monstera.png" alt="">
+                    <p class="name">몬스테라</p>
+                </div>
+                <div class="plant_info" data-plant="스킨답서스">
+                    <img src="images/skindapsus.png" alt="">
+                    <p class="name">스킨답서스</p>
+                </div>
+                <div class="plant_info" data-plant="극락조화">
+                    <img src="images/strlitziaceae.png" alt="">
+                    <p class="name">극락조화</p>
+                </div>
+                <div class="plant_info" data-plant="아레카야자">
+                    <img src="images/arecayaza.png" alt="">
+                    <p class="name">아레카야자</p>
+                </div>
+                <div class="plant_info" data-plant="피토니아">
+                    <img src="images/pitonia.png" alt="">
+                    <p class="name">피토니아</p>
+                </div>
+                <div class="plant_info" data-plant="호야">
+                    <img src="images/hoya.png" alt="">
+                    <p class="name">호야</p>
+                </div>
+                <div class="plant_info" data-plant="뱅갈 고무나무">
+                    <img src="images/banggal.png" alt="">
+                    <p class="name">뱅갈 고무나무</p>
+                </div>
+            </div>
+            <div class="dic_info">
+                <div class="plant_info" data-plant="방울토마토">
+                    <img src="images/bangwooltomato.png" alt="">
+                    <p class="name">방울토마토</p>
+                </div>
+                <div class="plant_info" data-plant="대파">
+                    <img src="images/daepa.png" alt="">
+                    <p class="name">대파</p>
+                </div>
+                <div class="plant_info" data-plant="무순">
+                    <img src="images/musoon.png" alt="">
+                    <p class="name">무순</p>
+                </div>
+                <div class="plant_info" data-plant="상추">
+                    <img src="images/sangchoo.png" alt="">
+                    <p class="name">상추</p>
+                </div>
+                <div class="plant_info" data-plant="로즈마리">
+                    <img src="images/rosemari.png" alt="">
+                    <p class="name">로즈마리</p>
+                </div>
+                <div class="plant_info" data-plant="바질">
+                    <img src="images/basil.png" alt="">
+                    <p class="name">바질</p>
+                </div>
+                <div class="plant_info" data-plant="애플민트">
+                    <img src="images/applemint.png" alt="">
+                    <p class="name">애플민트</p>
+                </div>
+            </div>
+            <div class="dic_info">
+                <div class="plant_info dic_info_plus" data-plant="알로에">
+                    <img src="images/alloe.png" alt="">
+                    <p class="name">알로에</p>
+                </div>
+                <div class="plant_info dic_info_plus" data-plant="산세베리아">
+                    <img src="images/sanseberia.png" alt="">
+                    <p class="name">산세베리아</p>
+                </div>
+                <div class="plant_info dic_info_plus" data-plant="정야">
+                    <img src="images/jungya.png" alt="">
+                    <p class="name">정야</p>
+                </div>
+                <div class="plant_info dic_info_plus" data-plant="에오니움">
+                    <img src="images/eonium.png" alt="">
+                    <p class="name">에오니움</p>
+                </div>
+                <div class="plant_info dic_info_plus" data-plant="코노피튬">
+                    <img src="images/konopitum.png" alt="">
+                    <p class="name">코노피튬</p>
+                </div>
+                <div class="plant_info dic_info_plus" data-plant="녹영">
+                    <img src="images/nokyong.png" alt="">
+                    <p class="name">녹영</p>
+                </div>
+                <div class="plant_info dic_info_plus" data-plant="취송설">
+                    <img src="images/chisongsul.png" alt="">
+                    <p class="name">취송설</p>
+                </div>
+            </div>
+
+
+
+            <button class="more_btn">더보기</button>
+        </div>
+    </div>
+
+    <div class="popupView dic_popup">
+        <h2>식물 이름</h2>
+        <div class="photo">
+            <img src="" alt="">
+        </div>
+        <div class="popupView_content">
+            <span>분류 :</span>
+            <h4>설명</h4>
+
+            <span>식물형상 :</span>
+            <h4>설명</h4>
+
+            <span>과명 :</span>
+            <h4>설명</h4>
+
+            <span>높이/너비 :</span>
+            <h4>설명</h4>
+
+            <span>꽃색 :</span>
+            <h4>설명</h4>
+
+            <span>생육환경 :</span>
+            <h4>설명</h4>
+
+            <span>식물정보 :</span>
+            <h4>설명</h4>
+        </div>
+        <div id="close" class="popupView_close">
+            X 닫기
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_container">
+            <div class="footer_one">
+                <div class="footer_logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="footer_content">
+                    <p>상호명 : 리움가든 <br><br> 대표 : 윤예린, 유리흔, 임하진<br><br>E-mail : liumgarden@gmail.com <br><br>© 리움가든. All rights reserved. Designed by YRH</p>
+                </div>
+            </div>
+            <div class="footer_two">
+                <div class="footer_two_list">
+                    <li><a href="dic.html">식물사전</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="myPlant.html">My Plant</a></li>
+                    <li><a href="store.html">스토어</a></li>
+                    <li><a href="plantHostial.html">식물병원</a></li>
+                </div>
+            </div>
+            <div class="footer_three">
+                <div class="footer_three_list">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">이용안내</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const plantItems = document.querySelectorAll('.plant_info');
+            const popup = document.querySelector('.dic_popup');
+            const closeBtn = document.getElementById('close');
+            const moreBtn = document.querySelector('.more_btn');
+            const plusInfos = document.querySelectorAll('.dic_info_plus');
+
+            if (moreBtn){
+                moreBtn.addEventListener('click', function(){
+                    plusInfos.forEach(info => {
+                        info.classList.add('active')
+                    });
+                    this.style.display = 'none';
+                })
+            }
+
+            const savedData = JSON.parse(localStorage.getItem('plantData') || '{}');
+            
+            plantItems.forEach(item => {
+                const plantKey = item.getAttribute('data-plant');
+                
+                if (savedData[plantKey]) {
+                    const data = savedData[plantKey];
+                    
+                    if (data.img && data.img.trim() !== "") {
+                        item.querySelector('img').src = data.img;
+                    }
+                    
+                    if (data.newname && data.newname.trim() !== "") {
+                        item.querySelector('.name').textContent = data.newname;
+                    } else if (data.name) {
+                        item.querySelector('.name').textContent = data.name;
+                    }
+                }
+            });
+
+            plantItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const plantKey = this.getAttribute('data-plant');
+                    const baseData = window.plantData || {};
+                    const currentSavedData = JSON.parse(localStorage.getItem('plantData') || '{}');
+                    const mergedData = { ...baseData, ...currentSavedData };
+                    const data = mergedData[plantKey];
+
+                    popup.style.display = 'block';
+
+                    if (!data) {
+                        popup.querySelector('h2').textContent = "데이터 없음";
+                        popup.querySelector('.photo img').src = "";
+                        popup.querySelectorAll('.popupView_content h4').forEach(el => el.textContent = "-");
+                        return;
+                    }
+
+                    if (data.newname && data.newname.trim() !== "") {
+                        popup.querySelector('h2').textContent = data.newname;
+                    } else {
+                        popup.querySelector('h2').textContent = data.name;
+                    }
+
+                    
+                    popup.querySelector('.photo img').src = data.img;
+
+                    const infoContents = popup.querySelectorAll('.popupView_content h4');
+                    infoContents[0].textContent = data.type;
+                    infoContents[1].textContent = data.shape;
+                    infoContents[2].textContent = data.family;
+                    infoContents[3].textContent = data.size;
+                    infoContents[4].textContent = data.color;
+                    infoContents[5].textContent = data.env;
+                    infoContents[6].textContent = data.info;
+                });
+            });
+
+            closeBtn.addEventListener('click', function(){
+                popup.style.display = "none";
+            });
+        });
+
+        function searchPlant(){
+            const searchInput=document.getElementById('search').value.toLowerCase().trim();
+            const plantItems=document.querySelectorAll('.plant_info');
+            const containers=document.querySelectorAll('.dic_info');
+
+            plantItems.forEach(item => {
+                const name = item.querySelector('.name').textContent.toLowerCase().trim();
+
+                if (name.includes(searchInput)){
+                    item.style.display = 'block';
+                }
+                else{
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
